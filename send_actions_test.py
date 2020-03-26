@@ -104,7 +104,7 @@ class Connect():
         while True:
             image = self.capture_one_img()
             sleep(frame_frecuency)
-            cv2.imwrite('./images/{}.jpg'.format(time.time()), image[:,:,[2,1,0]])
+            cv2.imwrite('./images/{}.jpg'.format(time.time()), image[:, :, [2, 1, 0]])
         return None
 
     def run_action(self, cmd):
@@ -138,6 +138,14 @@ connection = Connect(server_ip, server_port)
 #connection.start_stream()
 connection.run_action('camready')
 sleep(2)
-connection.run_action('CamUpDown_-40')
+connection.run_action('CamUpDown_-30')
+sleep(2)
+connection.run_action('TurnWheels_120')
+sleep(2)
+connection.run_action('TurnWheels_90')
+sleep(2)
+connection.run_action('TurnWheels_60')
+sleep(2)
+connection.run_action('TurnWheels_45')
 #img = connection.capture_one_img()
 #cv2.imwrite('./images/{}.jpg'.format(time.time()), img[:, :, [2, 1, 0]])
