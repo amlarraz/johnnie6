@@ -2,8 +2,6 @@ import cv2
 import numpy as np
 from time import time
 
-from send_actions_test import Connect
-
 cam = cv2.VideoCapture(0)
 not_detected = True
 

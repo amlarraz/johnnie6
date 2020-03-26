@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 '''
 /**********************************************************************
-* Filename    : client.py
+* Filename    : client(for_reference_only).py
 * Description : Client for PiCar-V. Use python3 + pyqt5
 * Author      : Dream
 * Company     : Sunfounder

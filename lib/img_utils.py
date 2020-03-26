@@ -1,7 +1,5 @@
-
 import numpy as np
 import cv2
-from time import time
 
 
 def red_filter(img):
@@ -26,7 +24,7 @@ def circle_detection(msk, init_cam, visualize=False):
         (x_grade_cam, y_grade_cam) = angles_camera(x, y)
         x_grade_fw = angle_frontwheels(x)
 
-        if visualize:
+        if visualize:# only for debug
             # Only to visualize -----------------------------------------------------------------------
             """
             msk = cv2.cvtColor(msk, cv2.COLOR_GRAY2BGR)
@@ -63,7 +61,7 @@ def component_detection(msk, prev, area_min=None, visualize=False):
         (x_grade_cam, y_grade_cam) = angles_camera(x, y)
         x_grade_fw = angle_frontwheels(x_grade_cam, prev)
 
-        if visualize:
+        if visualize:  # only for debug
             msk = cv2.rectangle(msk, (int(x) - 5, int(y) - 5), (int(x) + 5, int(y) + 5), (255, 255, 255), -1)
             cv2.imwrite('./images/X_{}_{}-Y_{}_{}-Area_{}.png'.format(x_grade_cam, x, y_grade_cam, y, area), msk)
 
@@ -71,10 +69,12 @@ def component_detection(msk, prev, area_min=None, visualize=False):
     else:
         return (0, 0, -1, 0)
 
+
 def angles_camera(x, y):
     (x_grade, y_grade) = (int((x - 320) / 9), int((240 - y) / 7))  # x_grade in (-35.5, 35.5) y_grade in (-34.28, 34.28)
 
     return (x_grade, y_grade)
+
 
 def angle_frontwheels(x_grade_cam, prev):
     new_grade = prev + x_grade_cam

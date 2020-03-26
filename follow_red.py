@@ -9,7 +9,7 @@ johnnie_port = "8000"
 frame_frecuency = 0.01
 mode = 'component'
 speed = 10
-
+area_min = 1500
 # ----------------------------------------------------------------------------
 johnnie6 = Connect(johnnie_ip, johnnie_port)
 johnnie6.run_action('camready')
@@ -24,9 +24,12 @@ while True:
     johnnie6.run_action('BackWheels_{}_{}'.format(speed, 0))
 
     if mode == 'circle':
-        (grade_x_cam, grade_y_cam, radius, grade_x_fw) = circle_detection(red_msk,  prev_x, visualize=True)
+        (grade_x_cam, grade_y_cam, radius, grade_x_fw) = circle_detection(red_msk,  prev_x,
+                                                                          visualize=True)
     elif mode == 'component':
-        (grade_x_cam, grade_y_cam, area, grade_x_fw) = component_detection(red_msk, prev_x, area_min=2000)
+        (grade_x_cam, grade_y_cam, area, grade_x_fw) = component_detection(red_msk, prev_x,
+                                                                           area_min=area_min,
+                                                                           visualize=False)
 
     actions = []
     if grade_x_cam != 0 or grade_y_cam != 0 or grade_x_fw != 0:
