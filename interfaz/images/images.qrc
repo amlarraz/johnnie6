@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="prefijoNuevo">
+    <file>auto-icon.png</file>
+  </qresource>
+</RCC>
