@@ -25,10 +25,10 @@ from urllib.request import urlopen
 import requests
 
 # USER INTERFACES: Carga las UIs que hay en los siguientes archivos --------------
-login_screen = "login_screen.ui"
-running_screen = "running_screen.ui"
-setting_screen = "setting_screen.ui"
-calibrate_screen = "calibrate_screen.ui"
+login_screen = "./ui/login_screen.ui"
+running_screen = "./ui/running_screen.ui"
+setting_screen = "./ui/setting_screen.ui"
+calibrate_screen = "./ui/calibrate_screen.ui"
 
 # Load the ui files
 Ui_Login_screen, QtBaseClass = uic.loadUiType(login_screen)
@@ -61,7 +61,7 @@ def __reflash_url__():  # funcion que rehace la URL de base -> http://192.168.1.
     global BASE_URL
     BASE_URL = 'http://' + HOST + ':' + PORT + '/'
 
-def __read_auto_inf__():  # funcion para leer la ip, port y remember_status (recordar dartos) de un archivo, esto puede molar
+def __read_auto_inf__():  # funcion para leer la ip, port y remember_status (recordar datos) de un archivo, esto puede molar
     try:
         fp = open("auto_ip.inf", 'r')
         lines = fp.readlines()
@@ -265,7 +265,7 @@ class RunningScreen(QtWidgets.QDialog, Ui_Running_screen):
         self.timer = QTimer(timeout=self.reflash_frame)  # Qt timer, time up, run reflash_frame()
         self.timer.start(RunningScreen.TIMEOUT)  # start timer
         # init the position
-        run_action('fwready')  # Imagino que estas acciones solo valen para decir que esta listo
+        run_action('fwready')  # Estas acciones valen para colocar los servos en la postura inicial dada por la calibracion
         run_action('bwready')
         run_action('camready')
 

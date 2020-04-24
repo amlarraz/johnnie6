@@ -21,4 +21,6 @@ __IMPORTANT NOTES__:
 
 ## How I can start?
 
-[Working on it]
+Due this project is based in the SunFounder RC car, all the steps are based in this car.
+
+Step 1: 
